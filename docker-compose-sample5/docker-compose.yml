@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  nginx-service:
+    image: nginx
+    networks:
+      - my_net
+    depends_on:
+      - ruby-service
+    container_name: nginx-test
+    dns: 8.8.8.8
+    extra_hosts:
+      - "local.server:192.168.0.22"
+    
+
+  ruby-service:
+    image: ruby
+    depends_on:
+      - redis-service
+    
+  redis-service:
+    image: redis
+
+networks:
+  my_net:
+  

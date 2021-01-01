@@ -1,0 +1,14 @@
+version: '3.1'
+
+# docker container run --name proxy -p 80:80 -v ./nginx.conf:/etc/nginx/conf.d/default.conf nginx
+services:
+  proxy:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+
+# docker container run --name web httpd
+  web:
+    image: httpd
